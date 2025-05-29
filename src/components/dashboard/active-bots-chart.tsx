@@ -7,8 +7,8 @@ import { Bot, TrendingUp, TrendingDown } from "lucide-react"
 const botsData = [
   {
     id: 1,
-    name: "Kraken",
-    strategy: "Accumulation bot",
+    name: "FX 10° RANGE",
+    strategy: "Balanced FX trading",
     performance: 94.2,
     profit: 156.78,
     status: "active",
@@ -16,17 +16,17 @@ const botsData = [
   },
   {
     id: 2,
-    name: "Binance",
-    strategy: "Grid trading",
+    name: "FX 5° RANGE",
+    strategy: "Conservative FX trading",
     performance: 87.5,
     profit: 89.34,
-    status: "active", 
+    status: "active",
     trend: "up"
   },
   {
     id: 3,
-    name: "Ethereum",
-    strategy: "DCA strategy",
+    name: "3D FX FUND",
+    strategy: "Premium fund strategy",
     performance: 76.8,
     profit: 45.23,
     status: "active",
@@ -55,10 +55,10 @@ export function ActiveBotsChart() {
               ) : (
                 <TrendingDown className="h-4 w-4 text-red-400" />
               )}
-              <Badge 
+              <Badge
                 className={`${
-                  bot.status === "active" 
-                    ? "bg-green-600/20 text-green-400 border-green-600/30" 
+                  bot.status === "active"
+                    ? "bg-green-600/20 text-green-400 border-green-600/30"
                     : "bg-gray-600/20 text-gray-400 border-gray-600/30"
                 }`}
               >
@@ -66,18 +66,18 @@ export function ActiveBotsChart() {
               </Badge>
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
               <span className="text-gray-400">Performance</span>
               <span className="text-white">{bot.performance}%</span>
             </div>
-            <Progress 
-              value={bot.performance} 
+            <Progress
+              value={bot.performance}
               className="h-2 bg-white/10"
             />
           </div>
-          
+
           <div className="flex justify-between items-center mt-3">
             <span className="text-gray-400 text-sm">Profit</span>
             <span className={`font-medium ${
@@ -88,7 +88,7 @@ export function ActiveBotsChart() {
           </div>
         </div>
       ))}
-      
+
       <div className="text-center pt-2">
         <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
           SHOW MORE
