@@ -152,7 +152,7 @@ export default function SignIn() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                  className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 text-gray-900 placeholder:text-gray-500"
                 />
               </div>
 
@@ -164,7 +164,7 @@ export default function SignIn() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 pr-10"
+                  className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500 text-gray-900 placeholder:text-gray-500 pr-10"
                 />
                 <Button
                   type="button"
