@@ -39,14 +39,14 @@ export default function Home() {
             Professional Trading Bots
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Rent AI-Powered
+            High-Performance
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-              {" "}Trading Bots
+              {" "}AI Trading Software
             </span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Access professional-grade trading algorithms that work 24/7 to maximize your FX profits.
-            No coding required, just rent and earn.
+            AI BOT technology offers all the advantages of high frequency trading,
+            without the need to employ a broker or any prior market knowledge.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/signup">
@@ -76,16 +76,16 @@ export default function Home() {
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2">94.2%</div>
-              <p className="text-gray-300">Success Rate</p>
+              <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2">300+</div>
+              <p className="text-gray-300">Global Clients</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">$2.4M+</div>
-              <p className="text-gray-300">Total Profits</p>
+              <div className="text-4xl md:text-5xl font-bold text-blue-400 mb-2">$1.5B+</div>
+              <p className="text-gray-300">Monthly Volume</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">15,000+</div>
-              <p className="text-gray-300">Active Users</p>
+              <div className="text-4xl md:text-5xl font-bold text-purple-400 mb-2">5</div>
+              <p className="text-gray-300">Continents</p>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-yellow-400 mb-2">24/7</div>
@@ -111,9 +111,9 @@ export default function Home() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
               <CardHeader>
                 <TrendingUp className="h-12 w-12 text-green-400 mb-4" />
-                <CardTitle className="text-white">Proven Performance</CardTitle>
+                <CardTitle className="text-white">High-Performance Investment</CardTitle>
                 <CardDescription className="text-gray-300">
-                  Our bots have generated consistent profits with advanced risk management
+                  Utilising our financial planning experience and proprietary trading technologies we deliver maximum profits at minimal risk. We constantly deliver double digit monthly returns with robust risk management.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -121,9 +121,9 @@ export default function Home() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
               <CardHeader>
                 <Shield className="h-12 w-12 text-blue-400 mb-4" />
-                <CardTitle className="text-white">Secure & Reliable</CardTitle>
+                <CardTitle className="text-white">We Keep Your Funds Safe</CardTitle>
                 <CardDescription className="text-gray-300">
-                  Bank-grade security with 24/7 monitoring and instant notifications
+                  All client funds are held in segregated accounts with tier 1 custodian banks, including HSBC international and The Commonwealth Bank of Australia, which use secure encryption technology.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -131,9 +131,9 @@ export default function Home() {
             <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
               <CardHeader>
                 <Zap className="h-12 w-12 text-yellow-400 mb-4" />
-                <CardTitle className="text-white">Instant Setup</CardTitle>
+                <CardTitle className="text-white">A Strong Team</CardTitle>
                 <CardDescription className="text-gray-300">
-                  Get started in minutes with our simple subscription model
+                  Our team consists of professional traders and technologists with vast experience in handling large sums of money, ability to assess and react swiftly to market changes.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -146,10 +146,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Choose Your Trading Bot
+              Home of the FX Plus Range
             </h2>
             <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Select the perfect bot for your trading style and risk tolerance
+              Our FX Plus products are a range of forex funds that use the highest levels of AI trading technology. We are a team made up of advanced financial players and Forex AI coders.
             </p>
           </div>
 
@@ -402,15 +402,15 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-300 mb-6">
-                  "AIFx has completely transformed my trading experience. The FX 10° RANGE bot has generated consistent profits for me over the past 6 months."
+                  "We have been working with Simple Bot for 6 months now and though the fund had its short term ups and downs we have made about 120% of our initial investment already."
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-semibold">SM</span>
+                    <span className="text-white font-semibold">AK</span>
                   </div>
                   <div>
-                    <p className="text-white font-semibold">Sarah Mitchell</p>
-                    <p className="text-gray-400 text-sm">Professional Trader</p>
+                    <p className="text-white font-semibold">Anna K</p>
+                    <p className="text-gray-400 text-sm">FX Plus Range Client</p>
                   </div>
                 </div>
               </CardContent>
@@ -424,15 +424,15 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-300 mb-6">
-                  "The 3D FX FUND bot is incredible. I've seen a 40% increase in my portfolio value since I started using it. The AI really knows what it's doing."
+                  "Since signing up, the fund constantly made profits far above my expectations and much better than any other of my investment. By re-investing the profits and exploiting the compound effect, you can really see how your wealth growth at an almost breathtaking pace."
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-semibold">MJ</span>
+                    <span className="text-white font-semibold">JD</span>
                   </div>
                   <div>
-                    <p className="text-white font-semibold">Michael Johnson</p>
-                    <p className="text-gray-400 text-sm">Investment Manager</p>
+                    <p className="text-white font-semibold">JD</p>
+                    <p className="text-gray-400 text-sm">FX Plus Range Investor</p>
                   </div>
                 </div>
               </CardContent>
@@ -446,15 +446,15 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-gray-300 mb-6">
-                  "As a beginner, I was nervous about FX trading. The FX 5° RANGE bot gave me the confidence to start, and I'm already seeing steady returns."
+                  "Easiest money i ever made, sounded to good to be true but its the best investment i ever came across. Quick easy set up with instant returns."
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-semibold">EC</span>
+                    <span className="text-white font-semibold">MD</span>
                   </div>
                   <div>
-                    <p className="text-white font-semibold">Emily Chen</p>
-                    <p className="text-gray-400 text-sm">New Trader</p>
+                    <p className="text-white font-semibold">MD</p>
+                    <p className="text-gray-400 text-sm">FX Plus Range Client</p>
                   </div>
                 </div>
               </CardContent>
