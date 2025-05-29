@@ -20,10 +20,13 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
+  // Stripe fields
+  stripeCustomerId String? @unique
+
   // Relations
   accounts      Account[]
   sessions      Session[]
-  subscription  Subscription?
+  subscriptions Subscription[]
   userBots      UserBot[]
   chatMessages  ChatMessage[]
   transactions  Transaction[]
@@ -71,16 +74,15 @@ model VerificationToken {
 }
 
 model Subscription {
-  id                String            @id @default(cuid())
-  userId            String            @unique
-  stripeCustomerId  String            @unique
-  stripeSubscriptionId String?        @unique
-  stripePriceId     String?
-  status            SubscriptionStatus @default(INACTIVE)
-  currentPeriodStart DateTime?
-  currentPeriodEnd   DateTime?
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id                   String            @id @default(cuid())
+  userId               String
+  stripeSubscriptionId String            @unique
+  planId               String            // fx-5-range, fx-10-range, etc.
+  status               String            @default("active") // active, canceled, past_due, etc.
+  currentPeriodStart   DateTime
+  currentPeriodEnd     DateTime
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -146,14 +148,6 @@ model ChatMessage {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("chat_messages")
-}
-
-enum SubscriptionStatus {
-  ACTIVE
-  INACTIVE
-  PAST_DUE
-  CANCELED
-  UNPAID
 }
 
 enum TransactionType {
