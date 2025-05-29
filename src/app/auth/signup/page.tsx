@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -45,7 +46,21 @@ export default function SignUp() {
 
       if (response.ok) {
         toast.success("Account created successfully!")
-        router.push("/auth/signin")
+
+        // Automatically sign in the user
+        const result = await signIn("credentials", {
+          email,
+          password,
+          redirect: false,
+        })
+
+        if (result?.ok) {
+          toast.success("Welcome to AIFx!")
+          router.push("/dashboard")
+        } else {
+          toast.error("Account created but sign in failed. Please sign in manually.")
+          router.push("/auth/signin")
+        }
       } else {
         const data = await response.json()
         toast.error(data.message || "Something went wrong")
