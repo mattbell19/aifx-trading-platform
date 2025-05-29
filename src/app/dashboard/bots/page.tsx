@@ -24,7 +24,7 @@ const availableBots = [
     id: 2,
     name: "DCA Master",
     description: "Dollar-cost averaging with smart entry points",
-    strategy: "DCA Strategy", 
+    strategy: "DCA Strategy",
     performance: "87.5%",
     monthlyFee: 19.99,
     features: ["Smart DCA", "Market Analysis", "Portfolio Optimization"],
@@ -34,11 +34,11 @@ const availableBots = [
   {
     id: 3,
     name: "Arbitrage Hunter",
-    description: "Cross-exchange arbitrage opportunities",
+    description: "Cross-broker arbitrage opportunities",
     strategy: "Arbitrage",
     performance: "91.8%",
     monthlyFee: 39.99,
-    features: ["Multi-Exchange", "Real-time Scanning", "Auto-execution"],
+    features: ["Multi-Broker", "Real-time Scanning", "Auto-execution"],
     rating: 4.9,
     users: 634
   }
@@ -132,10 +132,10 @@ export default function TradingBots() {
                       </div>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <Badge 
+                      <Badge
                         className={`${
-                          bot.status === "active" 
-                            ? "bg-green-600/20 text-green-400 border-green-600/30" 
+                          bot.status === "active"
+                            ? "bg-green-600/20 text-green-400 border-green-600/30"
                             : "bg-yellow-600/20 text-yellow-400 border-yellow-600/30"
                         }`}
                       >
@@ -218,7 +218,7 @@ export default function TradingBots() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-gray-300 text-sm">{bot.description}</p>
-                  
+
                   <div className="flex justify-between items-center">
                     <div>
                       <p className="text-gray-400 text-sm">Performance</p>
@@ -247,7 +247,7 @@ export default function TradingBots() {
                     </span>
                   </div>
 
-                  <Button 
+                  <Button
                     className="w-full bg-blue-600 hover:bg-blue-700"
                     onClick={() => rentBot(bot.id)}
                   >

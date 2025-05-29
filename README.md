@@ -1,14 +1,14 @@
-# AIFx - Trading Bot Platform
+# AIFx - FX Trading Bot Platform
 
-A modern SAAS platform for renting AI-powered trading bots built with Next.js, Prisma, and Tailwind CSS.
+A modern SAAS platform for renting AI-powered FX trading bots built with Next.js, Prisma, and Tailwind CSS.
 
 ## 🚀 Features
 
 - **Beautiful Dark UI**: Modern glassmorphism design with blue/purple gradients
 - **Authentication**: Secure login/signup with NextAuth.js
-- **Dashboard**: Real-time trading analytics with interactive charts
-- **Trading Bots**: Rent and manage AI-powered trading strategies
-- **AI Chat**: Get personalized trading advice from AI assistant
+- **Dashboard**: Real-time FX trading analytics with interactive charts
+- **Trading Bots**: Rent and manage AI-powered FX trading strategies
+- **AI Chat**: Get personalized FX trading advice from AI assistant
 - **Subscription Management**: Stripe integration for payments
 - **Responsive Design**: Works perfectly on all devices
 

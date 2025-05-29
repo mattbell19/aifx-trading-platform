@@ -18,7 +18,7 @@ interface Message {
 const quickQuestions = [
   "What's the best trading strategy for beginners?",
   "How do I optimize my portfolio?",
-  "Which bot should I choose for Bitcoin?",
+  "Which bot should I choose for EUR/USD?",
   "What are the current market trends?"
 ]
 
@@ -60,7 +60,7 @@ export default function AIChat() {
     try {
       // Simulate AI response - in real app, this would call your AI API
       await new Promise(resolve => setTimeout(resolve, 1000))
-      
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         content: getAIResponse(content),
@@ -79,23 +79,23 @@ export default function AIChat() {
   const getAIResponse = (userMessage: string): string => {
     // Simple mock responses - in real app, this would be your AI service
     const lowerMessage = userMessage.toLowerCase()
-    
+
     if (lowerMessage.includes("strategy") || lowerMessage.includes("trading")) {
       return "For beginners, I recommend starting with a DCA (Dollar-Cost Averaging) strategy. It's less risky and helps smooth out market volatility. Our DCA Master bot is perfect for this approach and has shown consistent 87.5% performance."
     }
-    
+
     if (lowerMessage.includes("portfolio") || lowerMessage.includes("optimize")) {
-      return "Portfolio optimization depends on your risk tolerance. I suggest diversifying across 3-5 major cryptocurrencies with 60% BTC, 25% ETH, and 15% in altcoins. Our Grid Trading Pro bot can help rebalance automatically."
+      return "Portfolio optimization depends on your risk tolerance. I suggest diversifying across 3-5 major currency pairs with 40% EUR/USD, 25% GBP/USD, 20% USD/JPY, and 15% in other majors. Our Grid Trading Pro bot can help rebalance automatically."
     }
-    
-    if (lowerMessage.includes("bitcoin") || lowerMessage.includes("btc")) {
-      return "For Bitcoin trading, I recommend the Grid Trading Pro bot. It's specifically optimized for BTC's volatility patterns and has achieved 94.2% success rate. The current market shows strong support at $42,000."
+
+    if (lowerMessage.includes("eur") || lowerMessage.includes("usd") || lowerMessage.includes("eurusd")) {
+      return "For EUR/USD trading, I recommend the Grid Trading Pro bot. It's specifically optimized for major currency pair volatility patterns and has achieved 94.2% success rate. The current market shows strong support at 1.0850."
     }
-    
+
     if (lowerMessage.includes("market") || lowerMessage.includes("trend")) {
-      return "Current market trends show bullish momentum for major cryptocurrencies. Bitcoin is testing resistance at $44,000, while Ethereum shows strong support above $2,800. This could be a good time for accumulation strategies."
+      return "Current market trends show bullish momentum for major currency pairs. EUR/USD is testing resistance at 1.0950, while GBP/USD shows strong support above 1.2650. This could be a good time for accumulation strategies."
     }
-    
+
     return "That's a great question! Based on current market conditions and your portfolio, I'd recommend focusing on risk management and diversification. Would you like me to analyze your specific trading goals or suggest a bot strategy?"
   }
 
@@ -152,8 +152,8 @@ export default function AIChat() {
                   }`}
                 >
                   <div className={`p-2 rounded-full ${
-                    message.sender === "user" 
-                      ? "bg-blue-600" 
+                    message.sender === "user"
+                      ? "bg-blue-600"
                       : "bg-gradient-to-r from-purple-500 to-blue-500"
                   }`}>
                     {message.sender === "user" ? (
@@ -177,7 +177,7 @@ export default function AIChat() {
                 </div>
               </div>
             ))}
-            
+
             {isLoading && (
               <div className="flex justify-start">
                 <div className="flex items-start space-x-3">
@@ -194,10 +194,10 @@ export default function AIChat() {
                 </div>
               </div>
             )}
-            
+
             <div ref={messagesEndRef} />
           </div>
-          
+
           {/* Message Input */}
           <div className="border-t border-white/10 p-4">
             <form onSubmit={handleSubmit} className="flex space-x-2">
@@ -208,8 +208,8 @@ export default function AIChat() {
                 className="flex-1 bg-white/10 border-white/20 text-white placeholder:text-gray-400"
                 disabled={isLoading}
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="bg-blue-600 hover:bg-blue-700"
                 disabled={isLoading || !inputMessage.trim()}
               >
@@ -229,7 +229,7 @@ export default function AIChat() {
             <p className="text-gray-400 text-sm">Real-time market insights</p>
           </CardContent>
         </Card>
-        
+
         <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
           <CardContent className="p-4 text-center">
             <BarChart3 className="h-8 w-8 text-blue-400 mx-auto mb-2" />
@@ -237,7 +237,7 @@ export default function AIChat() {
             <p className="text-gray-400 text-sm">Personalized recommendations</p>
           </CardContent>
         </Card>
-        
+
         <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
           <CardContent className="p-4 text-center">
             <DollarSign className="h-8 w-8 text-yellow-400 mx-auto mb-2" />

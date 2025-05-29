@@ -44,7 +44,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Access professional-grade trading algorithms that work 24/7 to maximize your crypto profits.
+            Access professional-grade trading algorithms that work 24/7 to maximize your FX profits.
             No coding required, just rent and earn.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
