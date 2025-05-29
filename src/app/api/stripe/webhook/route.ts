@@ -6,7 +6,8 @@ import Stripe from 'stripe'
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
-  const signature = headers().get('stripe-signature')
+  const headersList = headers()
+  const signature = headersList.get('stripe-signature')
 
   if (!signature) {
     return NextResponse.json({ error: 'No signature' }, { status: 400 })
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
-        
+
         if (session.mode === 'subscription') {
           const subscriptionId = session.subscription as string
           const userId = session.metadata?.userId
@@ -54,7 +55,7 @@ export async function POST(request: NextRequest) {
 
       case 'customer.subscription.updated': {
         const subscription = event.data.object as Stripe.Subscription
-        
+
         await prisma.subscription.updateMany({
           where: { stripeSubscriptionId: subscription.id },
           data: {
@@ -68,7 +69,7 @@ export async function POST(request: NextRequest) {
 
       case 'customer.subscription.deleted': {
         const subscription = event.data.object as Stripe.Subscription
-        
+
         await prisma.subscription.updateMany({
           where: { stripeSubscriptionId: subscription.id },
           data: { status: 'canceled' },
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest) {
 
       case 'invoice.payment_succeeded': {
         const invoice = event.data.object as Stripe.Invoice
-        
+
         if (invoice.subscription) {
           await prisma.subscription.updateMany({
             where: { stripeSubscriptionId: invoice.subscription as string },
@@ -90,7 +91,7 @@ export async function POST(request: NextRequest) {
 
       case 'invoice.payment_failed': {
         const invoice = event.data.object as Stripe.Invoice
-        
+
         if (invoice.subscription) {
           await prisma.subscription.updateMany({
             where: { stripeSubscriptionId: invoice.subscription as string },
