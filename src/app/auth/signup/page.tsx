@@ -75,7 +75,31 @@ export default function SignUp() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-      <div className="flex min-h-screen">
+      {/* Navigation */}
+      <nav className="border-b border-white/10 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center space-x-2">
+              <Bot className="h-8 w-8 text-blue-400" />
+              <span className="text-xl font-bold text-white">AIFx</span>
+            </Link>
+            <div className="flex items-center space-x-4">
+              <Link href="/auth/signin">
+                <Button variant="ghost" className="text-white hover:text-blue-400">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/auth/signup">
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="flex min-h-[calc(100vh-4rem)]">
         {/* Left side - Form */}
         <div className="flex-1 flex items-center justify-center p-4">
           <Card className="w-full max-w-md bg-white/5 border-white/10 backdrop-blur-sm">
