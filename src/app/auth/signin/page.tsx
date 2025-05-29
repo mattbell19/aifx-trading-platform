@@ -8,8 +8,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Bot, Eye, EyeOff } from "lucide-react"
+import { Bot, Eye, EyeOff, Star } from "lucide-react"
 import { toast } from "sonner"
+import { Footer } from "@/components/footer"
 
 export default function SignIn() {
   const [email, setEmail] = useState("")
@@ -43,8 +44,11 @@ export default function SignIn() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-white/5 border-white/10 backdrop-blur-sm">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <div className="flex min-h-screen">
+        {/* Left side - Form */}
+        <div className="flex-1 flex items-center justify-center p-4">
+          <Card className="w-full max-w-md bg-white/5 border-white/10 backdrop-blur-sm">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <Bot className="h-12 w-12 text-blue-400" />
@@ -113,6 +117,73 @@ export default function SignIn() {
           </div>
         </CardContent>
       </Card>
+        </div>
+
+        {/* Right side - Success Stories */}
+        <div className="hidden lg:flex flex-1 items-center justify-center p-8">
+          <div className="max-w-lg">
+            <h2 className="text-3xl font-bold text-white mb-8">
+              Welcome Back to Success
+            </h2>
+
+            <div className="space-y-6">
+              <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-300 mb-4">
+                    "I've been using AIFx for 8 months now. The 3D FX FUND bot has consistently outperformed my manual trading."
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white font-semibold text-sm">EC</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold text-sm">Emily Chen</p>
+                      <p className="text-gray-400 text-xs">Returning User</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-300 mb-4">
+                    "The dashboard makes it so easy to track my bot's performance. Love the real-time updates!"
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 bg-orange-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white font-semibold text-sm">DW</span>
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold text-sm">David Wilson</p>
+                      <p className="text-gray-400 text-xs">Active Trader</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <div className="text-center pt-4">
+                <p className="text-gray-300 text-sm">
+                  🎯 <span className="text-green-400 font-semibold">Your bots are waiting</span> •
+                  📈 <span className="text-blue-400 font-semibold">Track performance</span> •
+                  💎 <span className="text-purple-400 font-semibold">Maximize profits</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Footer />
     </div>
   )
 }
