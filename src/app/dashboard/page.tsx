@@ -26,22 +26,14 @@ export default function Dashboard() {
     activeBots: Object.values(subscriptions).filter(Boolean).length,
   }
 
-  // Load user subscriptions
+  // Simulate some subscriptions for demo
   useEffect(() => {
-    const loadSubscriptions = async () => {
-      try {
-        const response = await fetch('/api/subscriptions')
-        if (response.ok) {
-          const data = await response.json()
-          setSubscriptions(data.subscriptions)
-        }
-      } catch (error) {
-        console.error('Failed to load subscriptions:', error)
-      }
-    }
-
     if (session) {
-      loadSubscriptions()
+      // Demo: Set FX 10° RANGE as subscribed
+      setSubscriptions(prev => ({
+        ...prev,
+        'fx-10-range': true
+      }))
     }
   }, [session])
 
@@ -100,33 +92,19 @@ export default function Dashboard() {
     setLoading(true)
     try {
       if (subscriptions[botId as keyof typeof subscriptions]) {
-        // Handle unsubscribe - redirect to customer portal
-        const response = await fetch('/api/stripe/portal', {
-          method: 'POST',
-        })
-
-        if (response.ok) {
-          const { url } = await response.json()
-          window.location.href = url
-        } else {
-          toast.error('Failed to open billing portal')
-        }
+        // Simulate unsubscribe
+        setSubscriptions(prev => ({
+          ...prev,
+          [botId]: false
+        }))
+        toast.success('Successfully unsubscribed from bot')
       } else {
-        // Handle subscribe - redirect to Stripe checkout
-        const response = await fetch('/api/stripe/checkout', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ planId: botId }),
-        })
-
-        if (response.ok) {
-          const { url } = await response.json()
-          window.location.href = url
-        } else {
-          toast.error('Failed to start checkout')
-        }
+        // Simulate subscribe
+        setSubscriptions(prev => ({
+          ...prev,
+          [botId]: true
+        }))
+        toast.success('Successfully subscribed to bot')
       }
     } catch (error) {
       console.error('Subscription error:', error)
@@ -137,26 +115,7 @@ export default function Dashboard() {
   }
 
   const handleManage = async () => {
-    if (loading) return
-
-    setLoading(true)
-    try {
-      const response = await fetch('/api/stripe/portal', {
-        method: 'POST',
-      })
-
-      if (response.ok) {
-        const { url } = await response.json()
-        window.location.href = url
-      } else {
-        toast.error('Failed to open billing portal')
-      }
-    } catch (error) {
-      console.error('Portal error:', error)
-      toast.error('Something went wrong')
-    } finally {
-      setLoading(false)
-    }
+    toast.info('Billing management coming soon!')
   }
 
 

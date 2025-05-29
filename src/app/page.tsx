@@ -16,6 +16,29 @@ export default function Home() {
               <Bot className="h-8 w-8 text-blue-400" />
               <span className="text-xl font-bold text-white">AIFx</span>
             </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
+              <Link href="/features" className="text-gray-300 hover:text-white transition-colors">
+                Features
+              </Link>
+              <Link href="/how-it-works" className="text-gray-300 hover:text-white transition-colors">
+                How It Works
+              </Link>
+              <Link href="/pricing" className="text-gray-300 hover:text-white transition-colors">
+                Pricing
+              </Link>
+              <Link href="/testimonials" className="text-gray-300 hover:text-white transition-colors">
+                Testimonials
+              </Link>
+              <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">
+                Blog
+              </Link>
+              <Link href="/contact" className="text-gray-300 hover:text-white transition-colors">
+                Contact
+              </Link>
+            </div>
+
             <div className="flex items-center space-x-4">
               <Link href="/auth/signin">
                 <Button variant="ghost" className="text-white hover:text-blue-400">
