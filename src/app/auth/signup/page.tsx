@@ -50,7 +50,7 @@ export default function SignUp() {
         const data = await response.json()
         toast.error(data.message || "Something went wrong")
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong")
     } finally {
       setIsLoading(false)

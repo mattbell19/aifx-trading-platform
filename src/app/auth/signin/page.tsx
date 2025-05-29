@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { signIn, getSession } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -35,7 +35,7 @@ export default function SignIn() {
         toast.success("Welcome back!")
         router.push("/dashboard")
       }
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong")
     } finally {
       setIsLoading(false)
@@ -105,7 +105,7 @@ export default function SignIn() {
           </form>
           <div className="mt-6 text-center">
             <p className="text-gray-300">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300">
                 Sign up
               </Link>
