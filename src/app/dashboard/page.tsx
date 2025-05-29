@@ -81,9 +81,9 @@ export default function Dashboard() {
 
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header Section - Dark */}
-      <div className="bg-slate-900 px-6 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      {/* Header */}
+      <div className="px-6 py-8">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
@@ -95,59 +95,59 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Stats Section - White Background */}
-      <div className="bg-white px-6 py-8 border-b border-gray-200">
+      {/* Stats Section */}
+      <div className="px-6 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="bg-white border-gray-200 shadow-sm">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-600">Total Balance</CardTitle>
-              <DollarSign className="h-4 w-4 text-green-600" />
+              <CardTitle className="text-sm font-medium text-gray-300">Total Balance</CardTitle>
+              <DollarSign className="h-4 w-4 text-green-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-gray-900">${stats.totalBalance.toLocaleString()}</div>
-              <p className="text-xs text-gray-500">+2.1% from last month</p>
+              <div className="text-2xl font-bold text-white">${stats.totalBalance.toLocaleString()}</div>
+              <p className="text-xs text-gray-400">+2.1% from last month</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-600">Total Profit</CardTitle>
-              <TrendingUp className="h-4 w-4 text-green-600" />
+              <CardTitle className="text-sm font-medium text-gray-300">Total Profit</CardTitle>
+              <TrendingUp className="h-4 w-4 text-green-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-600">+${stats.totalProfit.toLocaleString()}</div>
-              <p className="text-xs text-gray-500">+{stats.profitPercentage}% this month</p>
+              <div className="text-2xl font-bold text-green-400">+${stats.totalProfit.toLocaleString()}</div>
+              <p className="text-xs text-gray-400">+{stats.profitPercentage}% this month</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-600">Active Bots</CardTitle>
-              <Bot className="h-4 w-4 text-blue-600" />
+              <CardTitle className="text-sm font-medium text-gray-300">Active Bots</CardTitle>
+              <Bot className="h-4 w-4 text-blue-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-gray-900">{stats.activeBots}</div>
-              <p className="text-xs text-gray-500">Currently subscribed</p>
+              <div className="text-2xl font-bold text-white">{stats.activeBots}</div>
+              <p className="text-xs text-gray-400">Currently subscribed</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-white border-gray-200 shadow-sm">
+          <Card className="bg-white/10 border-white/20 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-600">Performance</CardTitle>
-              <Activity className="h-4 w-4 text-amber-600" />
+              <CardTitle className="text-sm font-medium text-gray-300">Performance</CardTitle>
+              <Activity className="h-4 w-4 text-yellow-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-gray-900">94%</div>
-              <p className="text-xs text-gray-500">Success rate this week</p>
+              <div className="text-2xl font-bold text-white">94%</div>
+              <p className="text-xs text-gray-400">Success rate this week</p>
             </CardContent>
           </Card>
         </div>
       </div>
 
-      {/* Live Alerts Section - Light Blue Background */}
+      {/* Live Alerts Section */}
       {hasActiveSubscription && (
-        <div className="bg-blue-50 px-6 py-8 border-b border-blue-100">
-          <Card className="bg-blue-600 border-blue-700 shadow-lg">
+        <div className="px-6 pb-8">
+          <Card className="bg-blue-600/90 border-blue-500/30 backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
@@ -168,13 +168,13 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* Trading Bots Section - Light Gray Background */}
-      <div className="bg-gray-50 px-6 py-8">
+      {/* Trading Bots Section */}
+      <div className="px-6 pb-8">
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-900">Trading Bots</h2>
+          <h2 className="text-2xl font-bold text-white">Trading Bots</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {bots.map((bot) => (
-              <Card key={bot.id} className="bg-white border-gray-200 shadow-sm relative hover:shadow-md transition-shadow">
+              <Card key={bot.id} className="bg-white/10 border-white/20 backdrop-blur-sm relative hover:bg-white/15 transition-all">
                 {bot.popular && (
                   <div className="absolute -top-2 -right-2">
                     <Badge className="bg-orange-500 text-white px-3 py-1 rounded-full shadow-sm">
@@ -186,37 +186,37 @@ export default function Dashboard() {
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="p-2 bg-blue-100 rounded-lg">
-                        <TrendingUp className="h-6 w-6 text-blue-600" />
+                      <div className="p-2 bg-blue-500/20 rounded-lg">
+                        <TrendingUp className="h-6 w-6 text-blue-400" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl font-bold text-gray-900">{bot.name}</CardTitle>
-                        <CardDescription className="text-gray-600">{bot.subtitle}</CardDescription>
+                        <CardTitle className="text-xl font-bold text-white">{bot.name}</CardTitle>
+                        <CardDescription className="text-gray-300">{bot.subtitle}</CardDescription>
                       </div>
                     </div>
                   </div>
-                  <p className="text-gray-700 mt-2">{bot.description}</p>
+                  <p className="text-gray-300 mt-2">{bot.description}</p>
                 </CardHeader>
 
                 <CardContent className="space-y-4">
                   {/* Performance Stats */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm text-gray-500">Avg. Performance</p>
-                      <p className="text-2xl font-bold text-green-600">{bot.avgPerformance}</p>
+                      <p className="text-sm text-gray-400">Avg. Performance</p>
+                      <p className="text-2xl font-bold text-green-400">{bot.avgPerformance}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Avg. Monthly Profit</p>
-                      <p className="text-2xl font-bold text-green-600">{bot.avgMonthlyProfit}</p>
+                      <p className="text-sm text-gray-400">Avg. Monthly Profit</p>
+                      <p className="text-2xl font-bold text-green-400">{bot.avgMonthlyProfit}</p>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div>
-                    <p className="text-sm text-gray-500 mb-2">Features:</p>
+                    <p className="text-sm text-gray-400 mb-2">Features:</p>
                     <div className="flex flex-wrap gap-2">
                       {bot.features.map((feature, index) => (
-                        <Badge key={index} variant="secondary" className="bg-gray-100 text-gray-700 border-gray-200">
+                        <Badge key={index} variant="secondary" className="bg-white/10 text-gray-300 border-white/20">
                           {feature}
                         </Badge>
                       ))}
@@ -224,9 +224,9 @@ export default function Dashboard() {
                   </div>
 
                   {/* Subscription Actions */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div className="text-lg font-semibold text-gray-900">
-                      {bot.price}<span className="text-sm text-gray-500">/month</span>
+                  <div className="flex items-center justify-between pt-4 border-t border-white/20">
+                    <div className="text-lg font-semibold text-white">
+                      {bot.price}<span className="text-sm text-gray-400">/month</span>
                     </div>
                     <div className="flex space-x-2">
                       {subscriptions[bot.id as keyof typeof subscriptions] ? (
@@ -234,7 +234,7 @@ export default function Dashboard() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                            className="border-white/30 text-gray-300 hover:bg-white/10"
                             onClick={() => handleSubscription(bot.id)}
                           >
                             Unsubscribe
