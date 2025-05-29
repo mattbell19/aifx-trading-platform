@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSession } from "next-auth/react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,10 +13,12 @@ import { User, Bell, Shield, Key, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 
 export default function Settings() {
+  const { data: session, status } = useSession()
+  const [isLoading, setIsLoading] = useState(false)
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    phone: "+1 (555) 123-4567"
+    name: "",
+    email: "",
+    phone: ""
   })
 
   const [notifications, setNotifications] = useState({
@@ -31,8 +34,48 @@ export default function Settings() {
     loginAlerts: true
   })
 
-  const handleProfileUpdate = () => {
-    toast.success("Profile updated successfully!")
+  // Load user data on component mount
+  useEffect(() => {
+    if (session?.user) {
+      setProfile({
+        name: session.user.name || "",
+        email: session.user.email || "",
+        phone: "" // Phone not stored in session, would need separate API call
+      })
+    }
+  }, [session])
+
+  const handleProfileUpdate = async () => {
+    if (!session?.user?.id) {
+      toast.error("User not authenticated")
+      return
+    }
+
+    setIsLoading(true)
+    try {
+      const response = await fetch("/api/user/profile", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: profile.name,
+          email: profile.email,
+          phone: profile.phone,
+        }),
+      })
+
+      if (response.ok) {
+        toast.success("Profile updated successfully!")
+      } else {
+        const data = await response.json()
+        toast.error(data.message || "Failed to update profile")
+      }
+    } catch {
+      toast.error("Something went wrong")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleNotificationUpdate = () => {
@@ -41,6 +84,28 @@ export default function Settings() {
 
   const handleSecurityUpdate = () => {
     toast.success("Security settings updated!")
+  }
+
+  if (status === "loading") {
+    return (
+      <div className="p-6 space-y-6 max-w-4xl mx-auto">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-2">Settings</h1>
+          <p className="text-gray-400">Loading your account settings...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!session) {
+    return (
+      <div className="p-6 space-y-6 max-w-4xl mx-auto">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-2">Settings</h1>
+          <p className="text-gray-400">Please sign in to access your settings</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -67,7 +132,7 @@ export default function Settings() {
             <Avatar className="h-20 w-20">
               <AvatarImage src="" alt="Profile" />
               <AvatarFallback className="bg-blue-600 text-white text-xl">
-                {profile.name.split(' ').map(n => n[0]).join('')}
+                {profile.name ? profile.name.split(' ').map(n => n[0]).join('') : 'U'}
               </AvatarFallback>
             </Avatar>
             <div>
@@ -109,8 +174,12 @@ export default function Settings() {
             </div>
           </div>
 
-          <Button onClick={handleProfileUpdate} className="bg-blue-600 hover:bg-blue-700">
-            Save Changes
+          <Button
+            onClick={handleProfileUpdate}
+            className="bg-blue-600 hover:bg-blue-700"
+            disabled={isLoading}
+          >
+            {isLoading ? "Saving..." : "Save Changes"}
           </Button>
         </CardContent>
       </Card>
@@ -235,7 +304,7 @@ export default function Settings() {
               <Key className="mr-2 h-4 w-4" />
               Change Password
             </Button>
-            
+
             <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
               <Key className="mr-2 h-4 w-4" />
               Generate API Keys
